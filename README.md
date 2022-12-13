@@ -1,9 +1,9 @@
-# Monibus App
+# Monibus website
 
-A Flutter project for school transport monitor person.
+A PHP project for school transport monitor person.
 
 ## About
-This project back-end API web is developed for my university graduation project. For the time, this project is only compatible with Android smartphone.
+This project website is developed for my university graduation project. 
 
 ## Licence
 
