@@ -1,0 +1,11 @@
+body{
+    background-color:rgb(129, 129, 129);
+}
+section{
+    background-color: #eeeeee;
+}
+footer{
+    /* background-color: #910000; */
+    text-align: center;
+    color: #000000;
+}
