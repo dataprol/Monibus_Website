@@ -19,25 +19,29 @@
             $_SESSION['usuarioErroEsperar'] = .1;
         }
     
-        $sql = "UPDATE pessoas SET senhaPessoa='" . $arrayUsuarios['senha'] . "' WHERE idPessoa=" . $arrayUsuarios['id_usuario'] ;
+        $sql = "UPDATE pessoas "
+        . 'SET senhaPessoa = "' . $arrayUsuarios['senha'] . '", '
+        . 'idRecuperacaoAcesso = "", ' 
+        . 'validadeRecuperacaoAcesso = "" ' 
+        . 'WHERE idPessoa = ' . $arrayUsuarios['id_usuario'] ;
         if( $resultado = $Conn -> query( $sql ) ){
     
-            echo('<h2>sua senha foi alterada, com sucesso!</h2>');
+            echo('<h2>Senha alterada, com sucesso!</h2>');
         
         }else{
     
             $_SESSION['usuarioSituacao'] = "erro";
             sleep($_SESSION['usuarioErroEsperar']);
-            echo('<h2>houve algum problema na tentativa de alterar senha do usuário!');
-    
+            echo('<h2>Houve algum problema na tentativa de alterar senha do usuário!</h2>');
+    echo $Conn -> error.' | ' . $sql;
         }
 
     }else{
         
         $_SESSION['usuarioSituacao'] = "erro";
         sleep($_SESSION['usuarioErroEsperar']);
-        echo('<h2>houve algum problema na tentativa de alterar senha do usuário!');
-
+        echo('<h2>Usuário não encontrado para alterar senha do mesmo!</h2>');
+        echo $Conn -> error.' | ' . $sql;
     }
 
 ?>

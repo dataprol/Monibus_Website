@@ -46,63 +46,71 @@
 
                 if( $linha = $resultado -> fetch_assoc() ){
                     
-                    if( $linha[ 'validadeRecuperacaoAcesso' ] >= date_timestamp_get(new DateTime) ){
-        ?>
+                    if( $linha[ 'validadeRecuperacaoAcesso' ] >= (new DateTime) -> format('Y-m-d H:i:s') ){
+                        ?>
 
-        <form class="form-signin" action="/salvar" method="POST" name="formulario" id="formulario" 
-            onsubmit="return Validar(this);" >
-                    
-            <h2 class="h4 mb-3 font-weight-normal text-dark">
-                <b><?=_PROJETO_TITULO?></b>
-            </h2>
-        
-            <h1 class="h3 mb-3 font-weight-normal text-dark">
-                <b><center>Alterar de Senha</center></b>
-            </h1>
+                        <form class="form-signin" action="/salvar.php" method="POST" name="formulario" id="formulario" 
+                            onsubmit="return Validar(this);" >
+                                    
+                            <h2 class="h4 mb-3 font-weight-normal text-dark">
+                                <b><?=_PROJETO_TITULO?></b>
+                            </h2>
+                        
+                            <h1 class="h3 mb-3 font-weight-normal text-dark">
+                                <b><center>Alterar de Senha</center></b>
+                            </h1>
 
-            <label for="senhaNovaUsuario" class="sr-only">Nova senha</label>
-            <input type="password" name="senhaNovaUsuario" id="senhaNovaUsuario" class="form-control" 
-            placeholder="Nova senha" required autofocus>
+                            <label for="senhaNovaUsuario" class="sr-only">Nova senha</label>
+                            <input type="password" name="senhaNovaUsuario" id="senhaNovaUsuario" class="form-control" 
+                            placeholder="Nova senha" required autofocus>
 
-            <label for="senhaRepetidaUsuario" class="sr-only">Repita a senha</label>
-            <input type="password" name="senhaRepetidaUsuario" id="senhaRepetidaUsuario" class="form-control" 
-            placeholder="Repita a senha" required>
+                            <label for="senhaRepetidaUsuario" class="sr-only">Repita a senha</label>
+                            <input type="password" name="senhaRepetidaUsuario" id="senhaRepetidaUsuario" class="form-control" 
+                            placeholder="Repita a senha" required>
 
-            <input type="number" name="id_usuario" id="id_usuario" class="form-control" 
-            value=<?=$linha["idPessoa"]?> hidden>        
+                            <input type="number" name="id_usuario" id="id_usuario" class="form-control" 
+                            value=<?=$linha["idPessoa"]?> hidden>        
 
-            <button class="btn btn-lg btn-success btn-block" type="submit">Confirmar</button>
-            <a class="btn btn-lg btn-danger btn-block" href="#" onclick="window.history.back();">
-                Cancelar
-            </a>
+                            <button class="btn btn-lg btn-success btn-block" type="submit">Confirmar</button>
+                            <a class="btn btn-lg btn-danger btn-block" href="#" onclick="window.history.back();">
+                                Cancelar
+                            </a>
 
-        </form>
+                        </form>
 
-        <?php
+                        <?php
                 }else{
-        ?>
+                    ?>
 
-            <h2 class="h4 mb-3 font-weight-normal text-dark">
-            <b>Seu código expirou!</b>
-            </h2>
+                        <h2 class="h4 mb-3 font-weight-normal text-dark text-center">
+                            <center>
+                                <b>Seu código expirou!</b>
+                            </center>
+                        </h2>
             
-        <?php
+                    <?php
                 }
             }else{
-        ?>        
-                <h2 class="h4 mb-3 font-weight-normal text-dark">
-                <b>Algo deu errado!</b>
-                </h2>
-        <?php
+                ?>        
+                    <h2 class="h4 mb-3 font-weight-normal text-dark text-center">
+                        <center>
+                            <b>Algo deu errado!</b>
+                        </center>
+                    </h2>
+                <?php
+                http_response_code( 500 );
             }
         }else{
-        ?>        
-                <h2 class="h4 mb-3 font-weight-normal text-dark">
-                <b>Algo deu errado!</b>
+            ?>      
+                <h2 class="h4 mb-3 font-weight-normal text-dark text-center">
+                    <center>
+                        <b>Algo deu errado!</b>
+                    </center>  
                 </h2>
-        <?php
+            <?php
+                http_response_code( 500 );
         }
-        ?>
+            ?>
 
     </body>
 </html>

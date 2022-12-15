@@ -3,7 +3,7 @@
 A PHP project for school transport monitor person.
 
 ## About
-This project website is developed for my university graduation project. 
+This project website is doing developed for my university graduation project. 
 
 ## Licence
 
