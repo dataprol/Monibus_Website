@@ -27,6 +27,7 @@
         if( $resultado = $Conn -> query( $sql ) ){
     
             echo('<h2>Senha alterada, com sucesso!</h2>');
+            echo('<h3>Agora, você já pode entrar no aplicativo com sua nova senha.</h3>');
         
         }else{
     

@@ -59,6 +59,9 @@
                             <h1 class="h3 mb-3 font-weight-normal text-dark">
                                 <b><center>Alterar de Senha</center></b>
                             </h1>
+                            <p>
+                                Bem vindo(a), <?=$linha["nomePessoa"]?>! A seguir, você poderá fazer a alteração de sua senha.
+                            </p>
 
                             <label for="senhaNovaUsuario" class="sr-only">Nova senha</label>
                             <input type="password" name="senhaNovaUsuario" id="senhaNovaUsuario" class="form-control" 
@@ -114,3 +117,28 @@
 
     </body>
 </html>
+<script language="javascript">
+        function Validar( form1 ){
+
+            // Comparar senhas:
+            if( form1.senhaRepetidaUsuario.value != form1.senhaNovaUsuario.value ){
+                alert("As senhas digitadas estão diferentes!");
+                form1.senhaRepetidaUsuario.focus();
+                return false;
+            }
+
+/*             if( form1.senhaNovaUsuario.value.match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{6,}$/') ){
+                return true;
+            }else{
+                alert("A senha requer o mínimo de 6 caracteres, sendo pelo menos 1 letra minúscula, 1 maiúscula, 1 número e 1 outro tipo de caracter($,*,&,@ ou #)");
+                return false;
+            } */
+
+            if( form1.senhaNovaUsuario.value.length < 6 || form1.senhaRepetidaUsuario.value.length < 6 ){
+                alert("A senha ter, no mínimo, 6 caracteres, sendo pelo menos 1 letra minúscula, 1 maiúscula, 1 número e 1 outro tipo de caracter($,*,&,@ ou #)!");
+                form1.senhaNovaUsuario.focus();
+                return false;
+            }
+
+        }
+    </script> 
